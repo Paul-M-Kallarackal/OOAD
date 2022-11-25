@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+{% endblock%} 
+{% block title %}
+    <title>Create Deck </title>
+{% endblock%}
+
+
+{% block body %} 
+<h1> Create Deck</h1>   
+<table>
+<form action="/{{user['username']}}/createdeck" method="POST" >  
+    <div class="container">
+            <tr>
+                <th>
+                    <label>Deck Name : </label>   
+                </th>
+                <th>
+                    <input type="text" placeholder="Enter the name of the deck" name="deckname" required  type="text"> 
+                </th>
+                <th></th>
+            </tr>
+            <td></td>
+            <tr>
+                <th>Card Name</th>
+                <th>Card Description</th>
+                <th></th>
+            </tr>
+        {% for i in cards %}
+            <tr>
+                <td>{{i['c_name']}}</td>
+                <td>{{i['c_description']}}</td>
+                <td><input type="checkbox" name="cardlist" value="{{i['c_no']}}" /></td>
+            </tr>
+        {% endfor %}
+            
+            <tr><td colspan="2"><button type="submit" >Create the Deck</button></td>
+
+            </form>   
+                <td colspan="2"><a href="/{{user['username']}}/dashboard"><button>Go Back</button></a></td></tr>
+            </table>
+    </div>   
+  
+{% endblock%}

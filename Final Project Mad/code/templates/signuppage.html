@@ -1,0 +1,32 @@
+
+
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/login_signup.css'>
+{% endblock%} 
+{% block title %}
+    <title>User Signup Page </title>
+{% endblock%}
+
+
+
+{% block body %} 
+<h1>HTML Attribute FlashCard App</h1>
+<div class='form'>
+
+<form action='/signup' method='POST'>  
+    <h3>Sign Up</h3>
+        <label>Username : </label>   
+        <input type="text" placeholder="Enter Username" name="username" required minlength="5" type='text'>  
+        <br>
+        <label>Password : </label>   
+        <input type="password" placeholder="Enter Password" name="password" required minlength="7" type="password">  
+        <br>
+        <button type="submit">Signup</button>    
+        <br>
+        <br>
+        <div class="fb"><i class="fab fa-facebook">Returning User? Click <a href='/'>here</a> to login</i>  </div>
+</form>   
+</div>
+   
+{% endblock%}

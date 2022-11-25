@@ -1,0 +1,37 @@
+
+
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/login_signup.css'>
+{% endblock%} 
+{% block title %}
+    <title class="title">Create a Card </title>
+{% endblock%}
+
+
+{% block body %} 
+<h1 class="title">Create a Card</h1>   
+<div class="form">
+<form action="/{{user['username']}}/createcard" method="POST" >  
+    
+        <div class="input-container ic1">
+          <label for="firstname" class="placeholder">Card Name </label>
+          <input id="firstname" class="input" type="text" placeholder=" " name="card_name" required  />
+          <div class="cut"></div>
+          
+        </div>
+        <div class="input-container ic2">
+          <label for="lastname" class="placeholder">Card Description </label>
+          <input id="lastname" class="input" type="text" placeholder=" " name="card_description" required />
+          <div class="cut"></div>
+          
+        </div>
+        <button type="text" class="submit">Create the Card</button>
+        <br>
+        <br>
+      </form>
+      <a class='subtitle' href="/{{user['username']}}/cards"><button>Go Back</button></a>
+      </div>
+     
+
+{% endblock%}

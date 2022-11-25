@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+{% endblock%} 
+{% block title %}
+    <title>Deck Exists</title>
+{% endblock%}
+
+{% block name %} 
+    <h1>Deck Already Exists!</h1> 
+{% endblock%} 
+
+{% block body %} 
+<a href="/{{user['username']}}/dashboard"><button>Go Back?</button> </a>    
+{% endblock%}

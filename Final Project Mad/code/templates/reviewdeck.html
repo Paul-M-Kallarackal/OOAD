@@ -1,0 +1,97 @@
+
+
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+<script src='/static/onclick.js'></script>
+{% endblock%} 
+{% block title %}
+    <title>Review {{deck['deck_name']}} </title>
+{% endblock%}
+
+
+{% block body %} 
+<h1> Review {{deck['deck_name']}}</h1>
+<form action="/{{user['username']}}/viewdeck/{{deck['deck_name']}}/review" method="POST">
+  {% for i in cards %}
+  <table  class='center'>
+    <tr>
+     <td>  <div class="scene">
+      <div class="card">
+        <div class="card__face card__face--front">{{i}}</div>
+        <div class="card__face card__face--back"><div class='textcentre'>{{cards[i]}}</div></div>
+      </div>
+    </div></td>
+    <td> <label>Correct Answer?</label>
+      <select name="answer" >
+      <option value=1>Yes</option>
+      <option value=0>No</option>
+      </select>
+    </div></td>
+    <td>  <label>Question Difficulty</label>
+      <select name="question" id="question">
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+      </select></td>
+    </tr>
+  </table>
+  {% endfor %}
+  <button type="submit">Update Review</button>  
+</form>   
+
+    <style>
+      .scene {
+  width: 200px;
+  height: 260px;
+  perspective: 600px;
+}
+.card {
+  margin:auto;
+  width: 200px;
+  height: 260px;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.card__face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+.card__face--front {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 15;
+  background-image: url('/static/img.jpg');
+ 
+}
+
+.card__face--back {
+  background-image: url('/static/img.jpg');
+  background-size: auto;
+  transform: rotateY( 180deg );
+}
+.textcentre{text-align: center;
+margin: 0;
+position: absolute;
+top: 50%;
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+  </style>
+<script>var cards = document.querySelectorAll('.card');
+  for(let i = 0; i < cards.length; i++){
+    cards[i].addEventListener( 'click', function() {
+    cards[i].classList.toggle('is-flipped');
+  });
+  }</script>
+{% endblock%}

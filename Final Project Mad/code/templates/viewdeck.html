@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+{% endblock%} 
+{% block title %}
+    <title>{{deck['deck_name']}}</title>
+{% endblock%}
+
+
+{% block body %} 
+<h1> {{deck['deck_name']}}</h1>   
+        <table>
+            <tr>
+                <th>
+                    Card Name
+                </th>
+                <th>
+                    Card Description
+                </th>
+            </tr>
+        {% for i in cards %}
+            <tr>
+                <td>{{i['c_name']}}</td>
+                <td>{{i['c_description']}}</td>
+
+            </tr>
+        {% endfor %}
+        </table>  
+        <table>        <tr><td> <a href="/{{user['username']}}/deletedeck/{{deck['deck_name']}}"><button>Delete the Deck</button> </a> </td>
+            <td><a href="/{{user['username']}}/updatedeck/{{deck['deck_name']}}"><button>Update the Deck</button></a> </td>
+        <td><a href="/{{user['username']}}/viewdeck/{{deck['deck_name']}}/review"><button>Review the Deck</button></a></td>
+        <td><a href="/{{user['username']}}/dashboard"><button>Go Back</button></a></td>
+        </tr>
+    </table> 
+
+    </div>   
+</form>     
+{% endblock%}

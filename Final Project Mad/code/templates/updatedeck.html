@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+{% endblock%} 
+{% block title %}
+    <title>Update Deck </title>
+{% endblock%}
+
+
+{% block body %} 
+<h1> Update {{deck_name}}</h1>   
+<form action="/{{user['username']}}/updatedeck/{{deck_name}}" method="POST" >  
+    <div >   
+   
+        <table >
+            <tr>        
+                <th>Card Name</th>
+                <th>Card Description</th>
+            </tr>
+        {% for i in cards %}
+            <tr>
+                <td>{{i['c_name']}}</td>
+                <td>{{i['c_description']}}</td>
+                <td><input type="checkbox" name="cardlist" value="{{i['c_no']}}"/></td>
+            </tr>
+        {% endfor %}
+        <tr>
+        <td colspan="2"><button type="submit" >Update the Deck</button></td>
+        
+        <td colspan="2"><a href="/{{user['username']}}/dashboard"><button>Go Back</button></a></td>
+        </tr>
+        </table>    
+        
+    </div>   
+</form>     
+{% endblock%}

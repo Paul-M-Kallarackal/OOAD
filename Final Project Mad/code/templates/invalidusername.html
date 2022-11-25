@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+{% endblock%} 
+{% block title %}
+    <title>Username Exists</title>
+{% endblock%}
+
+{% block name %} 
+    <h1>Username Already Exists!</h1> 
+{% endblock%} 
+
+{% block body %} 
+<a href='/signup'><button>Retry?</button> </a>    
+{% endblock%}

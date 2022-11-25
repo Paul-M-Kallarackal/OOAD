@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+{% endblock%} 
+{% block title %}
+    <title>Card Exists</title>
+{% endblock%}
+
+{% block name %} 
+    <h1>Card Already Exists!</h1> 
+{% endblock%} 
+
+{% block body %} 
+<a href="/{{user['username']}}/cards"><button>Go Back?</button> </a>    
+{% endblock%}

@@ -1,0 +1,38 @@
+
+
+{% extends "base.html" %}
+{% block stylesheet %}
+{% endblock%} 
+{% block title %}
+    <title>{{user['username']}}'s Dashboard</title>
+{% endblock%}
+
+{% block name %} 
+
+{% endblock%} 
+
+{% block body %}
+    <div >
+    <h1 >{{user['username']}}'s Dashboard</h1>
+    <table class='center'>
+        {% for deck in range(data|length) %}
+        
+            
+            <tr><th></th><th> <a href="/{{user['username']}}/viewdeck/{{data[deck]['deck_name']}}"><button>{{data[deck]['deck_name']}}</button></a></th><th></th></tr>
+            <th>Last Reviewed Date and Time:</th>
+            <th>Last Reviewed Score:</th> 
+            <th>Average Deck Score:</th></tr>
+            <tr><th>{{data[deck]['time']}} </th><th>{{score_list[deck]}}</th><th> {{avglist[deck]}}</th></tr></tr>
+        {% endfor %}
+        <tr>
+           <td> <a href="/{{user['username']}}/createdeck"><button>Create a Deck</button> </a>
+        </td>
+    <td><a href="/{{user['username']}}/cards"><button>View Cards</button></a></td>
+<td><a href="/"><button>Logout?</button></a></td>
+</tr>
+</table>
+</div>
+
+
+{% endblock%}
+

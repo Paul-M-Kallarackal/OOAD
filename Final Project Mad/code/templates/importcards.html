@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+{% endblock%} 
+{% block title %}
+    <title>Import Cards </title>
+{% endblock%}
+
+
+{% block body %} 
+<h1> Import Cards</h1> 
+<div >   
+<table >
+<form action="/{{user['username']}}/importcards", method="POST" >  
+
+        
+            <tr>
+                <th>Card Name</th>
+                <th>Card Description</th>
+            </tr>
+        {% for i in cards %}
+            <tr>
+                <td>{{i['name']}}</td>
+                <td>{{i['description']}}</td>
+                <td><input type="checkbox" name="cardlist" value="{{i['s_no']}}"/></td>
+            </tr>
+        {% endfor %}
+          
+    <tr >
+            <td colspan="2">
+                <button type="submit" >Import the Cards</button>
+            </td>
+            
+        <td colspan="2">
+            <a href="/{{user['username']}}/cards"><button>Go Back</button></a> 
+        </td>
+    </tr>
+    
+</form> 
+
+</table> 
+</div>     
+
+{% endblock%}

@@ -1,0 +1,21 @@
+
+
+{% extends "base.html" %}
+{% block stylesheet %}
+<link rel='stylesheet' href='/static/dashboard.css'>
+{% endblock%} 
+{% block title %}
+    <title>{{user['username']}}'s Dashboard</title>
+{% endblock%}
+
+{% block name %} 
+    <h1>{{user['username']}}'s Dashboard</h1> 
+{% endblock%} 
+
+{% block body %} 
+<h1>Looks like there are no Cards yet.</h1>
+<a href="/{{user['username']}}/createcard"> <button>Create a Card?</button> </a>
+<a href="/{{user['username']}}/importcards"><button>Import Cards?</button></a>
+<a href="/{{user['username']}}/dashboard"><button>Go back?</button></a>
+{% endblock%}
+
